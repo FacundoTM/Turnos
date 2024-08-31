@@ -4,7 +4,7 @@ import TaskCard from "../components/TaskCard";
 import { useAuth } from "../context/AuthContext";
 
 function TasksPage() {
-  const { getTasks, tasks, getAdmTurnos, admTurnos } = useTasks();
+  const { getTasks, tasks, getAdmTurnos } = useTasks();
   const { user } = useAuth();
 
   const checkRank = () => {

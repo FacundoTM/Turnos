@@ -65,6 +65,8 @@ function TasksFormPage() {
             rows="3"
             placeholder="Piso y torre (Ej: 311 | Torre: 3 Piso: 11)"
           ></input>
+          <input {...register("notificate")} type="checkbox"></input>{" "}
+          Notificarme cuando esté terminado.
           <input
             className="text-white bg-zinc-700 w-full px-4 py-2 rounded-md my-2"
             type="date"

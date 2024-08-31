@@ -5,6 +5,7 @@ import {
   getTaskRequest,
   updateTaskRequest,
   getAdmTurnosRequest,
+  readyTaskRequest,
 } from "../api/task";
 
 const TaskContext = createContext();
@@ -61,6 +62,14 @@ export function TaskProvider({ children }) {
     }
   };
 
+  const readyTask = async (id, task) => {
+    try {
+      await readyTaskRequest(id, task);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
   const getTask = async (id) => {
     try {
       const res = await getTaskRequest(id);
@@ -73,7 +82,6 @@ export function TaskProvider({ children }) {
   const updateTask = async (id, task) => {
     try {
       await updateTaskRequest(id, task);
-      return console.log({ message: "Actualizada." });
     } catch (error) {
       console.log(error.response.data);
     }
@@ -90,6 +98,7 @@ export function TaskProvider({ children }) {
         getTasks,
         getAdmTurnos,
         admTurnos,
+        readyTask,
       }}
     >
       {children}
