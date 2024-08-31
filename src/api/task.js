@@ -3,13 +3,13 @@ import Cookies from "js-cookie";
 
 const obtenerToken = () => {
   const cookies = Cookies.get();
-
+  console.log("Empecé a ejecutar obtenerToken");
   let config = {
     headers: {
       Authorization: `Bearer ${cookies.token}`,
     },
   };
-
+  console.log(`Las cookies son: ${cookies.token}`);
   return config;
 };
 
