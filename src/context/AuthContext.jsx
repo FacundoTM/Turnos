@@ -59,7 +59,11 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
+        console.log("Voy a verificar si el token es correcto");
+        console.log(cookies.token);
         const res = await verifyTokenRequest(cookies.token);
+        console.log("Respuesta de res.data:");
+        console.log(res.data);
         if (!res.data) {
           setIsAuthenticated(false);
           setLoading(false);
