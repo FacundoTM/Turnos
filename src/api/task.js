@@ -5,7 +5,7 @@ const cookies = Cookies.get();
 
 let config = {
   headers: {
-    Authorization: "Bearer " + cookies.token,
+    Authorization: `Bearer ${cookies.token}`,
   },
 };
 
