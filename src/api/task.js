@@ -1,16 +1,15 @@
 import axios from "./axios";
 import Cookies from "js-cookie";
 
-const cookies = Cookies.get();
-
 const obtenerToken = () => {
-  console.log("Llamo a obtenerToken.");
+  const cookies = Cookies.get();
+
   let config = {
     headers: {
       Authorization: `Bearer ${cookies.token}`,
     },
   };
-  console.log(`La cookie tiene el token: ${cookies.token}`);
+
   return config;
 };
 
