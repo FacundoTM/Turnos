@@ -16,11 +16,14 @@ function TasksPage() {
   }, []);
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
-      {tasks.map((task) => (
-        <TaskCard task={task} key={task._id} />
-      ))}
-    </div>
+    <>
+      <h1 className="mb-8 pt-5 font-bold text-2xl">Mis turnos</h1>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {tasks.map((task) => (
+          <TaskCard task={task} key={task._id} />
+        ))}
+      </div>
+    </>
   );
 }
 
