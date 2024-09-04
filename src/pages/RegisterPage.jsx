@@ -3,8 +3,11 @@ import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function RegisterPage() {
+  const [formLoading, setFormLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -17,7 +20,12 @@ function RegisterPage() {
     if (isAuthenticated) navigate("/turnos");
   }, [isAuthenticated]);
 
+  useEffect(() => {
+    if (!!authErrors.length) setFormLoading(false);
+  }, [authErrors]);
+
   const onSubmit = handleSubmit(async (values) => {
+    setFormLoading(true);
     signup(values);
   });
 
@@ -50,7 +58,9 @@ function RegisterPage() {
             placeholder="Contraseña"
           />
           {errors.password && <p>La contraseña es requerida.</p>}
+          {formLoading ? "Cargando..." : ""}
           <button
+            disabled={formLoading}
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2"
             type="submit"
           >

@@ -3,8 +3,11 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function LoginPage() {
+  const [formLoading, setFormLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -12,22 +15,25 @@ function LoginPage() {
   } = useForm();
 
   const { signin, authErrors, isAuthenticated } = useAuth();
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) navigate("/turnos");
   }, [isAuthenticated]);
 
+  useEffect(() => {
+    if (!!authErrors.length) setFormLoading(false);
+  }, [authErrors]);
+
   const onSubmit = handleSubmit((data) => {
     signin(data);
+    setFormLoading(true);
   });
 
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
       <div className="bg-zinc-800 max-w-md w-full p-10 rounded-m">
-        {authErrors.map((error, i) => (
-          <p key={i}>{error}</p>
-        ))}
         <h1 className="text-2xl font-bold">Iniciar sesión</h1>
         <form onSubmit={onSubmit}>
           <input
@@ -44,7 +50,12 @@ function LoginPage() {
             placeholder="Contraseña"
           />
           {errors.password && <p>La contraseña es requerida.</p>}
+          {authErrors.map((error, i) => (
+            <p key={i}>{error}</p>
+          ))}
+          {formLoading ? "Cargando..." : ""}
           <button
+            disabled={formLoading}
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2"
             type="submit"
           >
