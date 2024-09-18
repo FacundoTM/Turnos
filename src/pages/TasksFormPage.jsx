@@ -47,32 +47,38 @@ function TasksFormPage() {
   });
 
   return (
-    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg - zinc - 800 max-w-md w-full p-10 rounded-m">
-        <h1 className="text-2xl font-bold">
-          {params.id ? "Editar turno" : "Solicitar turno"}
+    <div className="flex h-[calc(85vh-100px)] items-center justify-center">
+      <div className="max-w-md w-full p-10 rounded-m">
+        <h1 className="text-2xl mb-3 font-semibold text-[#9474FE] text-center">
+          {params.id ? "Modificar turno" : "Solicitar turno"}
         </h1>
         <form onSubmit={onSubmit}>
           <input
-            className="text-white bg-zinc-700 w-full px-4 py-2 rounded-md my-2"
+            className="text-[#B5B5B5] border-[#9474FE] border w-full px-4 py-2 rounded-md my-2"
             {...register("title", { required: true })}
             type="text"
             placeholder="Vehiculo (Ej: Toyota SW4)"
           />
           <input
             {...register("description", { required: true })}
-            className="text-white bg-zinc-700 w-full px-4 py-2 rounded-md my-2"
+            className="text-[#B5B5B5] border-[#9474FE] border text-whit w-full px-4 py-2 rounded-md my-2"
             rows="3"
             placeholder="Piso y torre (Ej: 311 | Torre: 3 Piso: 11)"
           ></input>
-          <input {...register("notificate")} type="checkbox"></input>{" "}
-          Notificarme cuando esté terminado.
           <input
-            className="text-white bg-zinc-700 w-full px-4 py-2 rounded-md my-2"
+            className="accent-[#9474FE]"
+            {...register("notificate")}
+            type="checkbox"
+          ></input>{" "}
+          <small className="text-[16px] text-[#9474FE]">
+            Notificarme cuando esté terminado.
+          </small>
+          <input
+            className="border-[#9474FE] border text-[#B5B5B5]  w-full px-4 py-2 rounded-md my-2"
             type="date"
             {...register("date", { required: true })}
           />
-          <button className="mt-3 bg-indigo-500 px-3 py-2 rounded-md">
+          <button className="flex m-auto font-semibold text-[14px] uppercase mt-3 bg-[#9474FE] px-3 py-2 rounded-md">
             {params.id ? "Editar turno" : "Aceptar"}
           </button>
         </form>

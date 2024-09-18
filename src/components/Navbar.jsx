@@ -5,18 +5,18 @@ function Navbar() {
   const { isAuthenticated, logout, user } = useAuth();
 
   return (
-    <nav className=" my-3 border-b sm:text-center sm:items-center flex justify-between py-5 px-10">
+    <nav className="flex-col h-52 items-center flex justify-center py-5 px-10 bg-[#693AFF]">
       <Link to={isAuthenticated ? "/turnos" : "/ingreso"}>
-        <h1 className="hover:text-cyan-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 text-2xl font-bold">
-          {isAuthenticated ? `Hola! ${user.username}` : "Sistema de turnos"}
+        <h1 className="text-[42px] hover:text-[#ffffff] transition ease-in-out delay-150 duration-300 text-2xl font-bold">
+          {isAuthenticated ? `Hola, ${user.username}!` : "Lavadero"}
         </h1>
       </Link>
-      <ul className="flex gap-x-2">
+      <ul className="flex flex-col items-center pt-6">
         {isAuthenticated ? (
           <>
             <li>
               <Link
-                className="transition ease-in-out delay-150 antialiased font-bold hover:text-cyan-300 text-white px-4 py-2"
+                className="transition-all uppercase ease-in-out delay-150 antialiased font-light hover:font-bold text-white px-4 py-2"
                 to="/turnos"
               >
                 Mis turnos
@@ -24,7 +24,7 @@ function Navbar() {
             </li>
             <li>
               <Link
-                className="transition ease-in-out delay-150 antialiased font-bold hover:text-cyan-300 text-white px-4 py-2"
+                className="transition-all uppercase ease-in-out delay-150 antialiased font-light hover:font-bold text-white px-4 py-2"
                 to="/solicitar-turno"
               >
                 Solicitar turno
@@ -32,7 +32,7 @@ function Navbar() {
             </li>
             <li>
               <Link
-                className="transition ease-in-out delay-150 antialiased font-bold hover:text-cyan-300 text-white px-4 py-2"
+                className="transition-all uppercase ease-in-out delay-150 antialiased font-light hover:font-bold text-white px-4 py-2"
                 onClick={() => logout()}
                 to="/ingreso"
               >
@@ -41,24 +41,7 @@ function Navbar() {
             </li>
           </>
         ) : (
-          <>
-            <li>
-              <Link
-                className="transition ease-in-out delay-150 antialiased font-bold hover:text-emerald-300 text-white px-4 py-2"
-                to="/ingreso"
-              >
-                Ingresar
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="transition ease-in-out delay-150 antialiased font-bold hover:text-emerald-300 text-white px-4 py-2"
-                to="/registro"
-              >
-                Registrarme
-              </Link>
-            </li>
-          </>
+          <></>
         )}
       </ul>
     </nav>

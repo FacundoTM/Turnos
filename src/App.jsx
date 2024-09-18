@@ -15,10 +15,10 @@ function App() {
     <AuthProvider>
       <TaskProvider>
         <BrowserRouter>
-          <main className="container mx-auto px-10">
+          <main className="container mx-auto">
             <Navbar />
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<LoginPage />} />
               <Route path="/ingreso" element={<LoginPage />} />
               <Route path="/registro" element={<RegisterPage />} />
 

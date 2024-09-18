@@ -30,46 +30,55 @@ function RegisterPage() {
   });
 
   return (
-    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-m">
-        <h1 className="text-2xl font-bold">Registro</h1>
+    <div className="flex h-[calc(85vh-100px)] items-center justify-center">
+      <div className=" max-w-md w-full p-10 rounded-m">
+        <h1 className="text-[#9473FE] text-center text-2xl font-semibold mb-6">
+          Registro
+        </h1>
         {authErrors.map((error, i) => (
           <p key={i}>{error}</p>
         ))}
         <form onSubmit={onSubmit}>
+          {errors.username && (
+            <p className="text-[#684DBE] ">El usuario es requerido.</p>
+          )}
           <input
-            className="text-white bg-zinc-700 w-full px-4 py-2 rounded-md my-2"
+            className="mb-3 text-zinc-800 border-[#805CFF] border w-full px-4 py-2 rounded-md my-2"
             {...register("username", { required: true })}
             type="text"
             placeholder="Nombre"
           />
-          {errors.username && <p>El usuario es requerido.</p>}
+          {errors.email && (
+            <p className="text-[#684DBE] ">El email es requerido.</p>
+          )}
           <input
-            className="text-white bg-zinc-700 w-full px-4 py-2 rounded-md my-2"
+            className="mb-3 text-zinc-800 border-[#805CFF] border w-full px-4 py-2 rounded-md my-2"
             {...register("email", { required: true })}
             type="email"
             placeholder="Email"
           />
-          {errors.email && <p>El email es requerido.</p>}
+          {errors.password && (
+            <p className="text-[#684DBE]">La contraseña es requerida.</p>
+          )}
           <input
-            className="text-white bg-zinc-700 w-full px-4 py-2 rounded-md my-2"
+            className="text-zinc-800 border-[#805CFF] border w-full px-4 py-2 rounded-md my-2"
             {...register("password", { min: 5, required: true })}
             type="password"
             placeholder="Contraseña"
           />
-          {errors.password && <p>La contraseña es requerida.</p>}
+
           {formLoading ? "Cargando..." : ""}
           <button
             disabled={formLoading}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2"
+            className="mt-6 m-auto flex bg-[#9473FE] hover:opacity-90 rounded-full text-white px-8 py-3"
             type="submit"
           >
             Registrar
           </button>
         </form>
-        <p className="mt-5">
+        <p className="mt-5 text-[#9070FF] text-center">
           Ya tenés cuenta?{" "}
-          <Link className="text-green-400" to="/ingreso">
+          <Link className="font-semibold" to="/ingreso">
             Ingresar
           </Link>
           .
