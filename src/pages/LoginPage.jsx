@@ -58,9 +58,13 @@ function LoginPage() {
           />
 
           {authErrors.map((error, i) => (
-            <p key={i}>{error}</p>
+            <p className="text-[#684DBE]" key={i}>
+              {error}
+            </p>
           ))}
-          {formLoading ? "Cargando..." : ""}
+          <small className="text-[#684DBE]">
+            {formLoading ? `Cargando...` : ""}
+          </small>
           <button
             disabled={formLoading}
             className="mt-6 m-auto flex bg-[#9473FE] hover:opacity-90 rounded-full text-white px-8 py-3"
