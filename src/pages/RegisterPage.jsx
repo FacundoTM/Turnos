@@ -66,8 +66,9 @@ function RegisterPage() {
             type="password"
             placeholder="Contraseña"
           />
-
-          {formLoading ? "Cargando..." : ""}
+          <small className="text-[#684DBE]">
+            {formLoading ? "Cargando..." : ""}
+          </small>
           <button
             disabled={formLoading}
             className="mt-6 m-auto flex bg-[#9473FE] hover:opacity-90 rounded-full text-white px-8 py-3"

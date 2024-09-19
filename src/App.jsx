@@ -9,6 +9,7 @@ import TaskFormPage from "./pages/TasksFormPage";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import { TaskProvider } from "./context/TasksContext";
 import Navbar from "./components/Navbar";
+import Success from "./pages/Success";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/solicitar-turno" element={<TaskFormPage />} />
                 <Route path="/turnos/:id" element={<TaskFormPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/sucess" element={<Success />} />
               </Route>
             </Routes>
           </main>

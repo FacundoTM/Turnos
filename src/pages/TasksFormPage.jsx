@@ -43,7 +43,7 @@ function TasksFormPage() {
         date: days.utc(data.date).format(),
       });
     }
-    navigate("/turnos");
+    navigate("/sucess");
   });
 
   return (
