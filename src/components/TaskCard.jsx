@@ -23,9 +23,7 @@ function TaskCard({ task }) {
       <small className="font-semibold antialiased text-sm">
         {days(task.date).utc().format("DD/MM/YYYY")}
       </small>
-      <small className="font-semibold antialiased text-sm">
-        {user.rank === 1 ? " | " + user.username : ""}
-      </small>
+
       <div className="flex gap-x-2 mt-5">
         {task.isReady === false ? (
           <>
